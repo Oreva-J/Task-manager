@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const cors = require('cors')
 //const connectDb = require('./config/connectDb')
 const mongoose = require('mongoose')
 // const Task = require('./taskModel')
@@ -11,7 +12,9 @@ const app = express()
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-
+app.use(cors({
+    origin: ['http://localhost:5173/', 'https://mern-task-program.orender.com']
+}))
 app.use(taskRoutes)
 
 // Home Page route
